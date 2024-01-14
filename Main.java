@@ -5,11 +5,10 @@ public class Main {
     static Scanner choice1 = new Scanner(System.in);
     static Scanner choice2 = new Scanner(System.in); 
     static int iterator;
-    static int finalresult;
-    static int plyerpos1;
-    static int plyerpos2;
-    static int play1;
-    static int play2;
+    static int gameagain;
+    static int mouvement1;
+    static int mouvement2;
+
     static String [][] Board= {{"-","-","-"},{"-","-","-"},{"-","-","-"}};
 
     //Creer le tableau
@@ -55,15 +54,15 @@ public class Main {
         
         do{
             System.out.println("Choose a position 1-3 for lines");
-             plyerpos1 = choice1.nextInt();
+            mouvement1 = choice1.nextInt();
          
             System.out.println("Choose a position 1-3 for columns");
-             plyerpos2 = choice2.nextInt();
+            mouvement2 = choice2.nextInt();
             
         }
-        while(Board[plyerpos1][plyerpos2]!="-");
+        while(Board[mouvement1][mouvement2]!="-");
         
-        Board[plyerpos1][plyerpos2]="X";
+        Board[mouvement1][mouvement2]="X";
     };
 
     //faire jouer l'ordinateur avec des nombres aleatoires
@@ -73,11 +72,11 @@ public class Main {
         
         do{
             
-            plyerpos1 = (int) (Math.random() * (2 - 0 + 1) + 0);
-            plyerpos2 = (int) (Math.random() * (2 - 0 + 1) + 0);
+            mouvement1 = (int) (Math.random() * (2 - 0 + 1) + 0);
+            mouvement2 = (int) (Math.random() * (2 - 0 + 1) + 0);
         }
-        while(Board[plyerpos1][plyerpos2]!="-");
-        Board[plyerpos1][plyerpos2]="O";
+        while(Board[mouvement1][mouvement2]!="-");
+        Board[mouvement1][mouvement2]="O";
     
     };
     //Montrer le tableau
@@ -119,7 +118,7 @@ public class Main {
             do{
 
                 ShowBoard();
-                
+                System.out.println("<-------------------------------------------------------->");
                 Player();
 
                 if(Checkwinner()==true)
@@ -135,6 +134,8 @@ public class Main {
                 };
                 ShowBoard();
 
+                System.out.println("<-------------------------------------------------------->");
+                
                 computer();
                 if(Checkwinner()==true)
                 {    
@@ -154,13 +155,13 @@ public class Main {
             do{
                 System.out.println("Wanna play again? Choose a number: 1-Yes 2-No");
             
-                finalresult = choice1.nextInt();
+                gameagain = choice1.nextInt();
             
-            }while(finalresult!=1 && finalresult!=2);
+            }while(gameagain!=1 && gameagain!=2);
             
             createBoard();
 
-        } while(finalresult == 1);
+        } while(gameagain == 1);
 
         System.out.println("Thanks for Playing");
     };
