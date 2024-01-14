@@ -4,7 +4,7 @@ public class Main {
     
     static Scanner choice1 = new Scanner(System.in);
     static Scanner choice2 = new Scanner(System.in); 
-    static int iterator = 0;
+    static int iterator;
     static int finalresult;
     static int plyerpos1;
     static int plyerpos2;
@@ -21,7 +21,6 @@ public class Main {
                 Board[i][j] ="-";
             } 
     }
-        iterator = 0;
     };
     //check if someone's won and will return true or false
     static Boolean Checkwinner()
@@ -74,8 +73,8 @@ public class Main {
         
         do{
             
-            plyerpos1 =(int) (Math.random() * (2 - 0 + 1) + 0);
-            plyerpos2 =(int) (Math.random() * (2 - 0 + 1) + 0);
+            plyerpos1 = (int) (Math.random() * (2 - 0 + 1) + 0);
+            plyerpos2 = (int) (Math.random() * (2 - 0 + 1) + 0);
         }
         while(Board[plyerpos1][plyerpos2]!="-");
         Board[plyerpos1][plyerpos2]="O";
@@ -92,7 +91,7 @@ public class Main {
     };
     //Verifier si match nul
     static Boolean checkDraw(){
-
+        iterator = 0;
         for (int i = 0; i < Board.length; ++i) {
             for(int j = 0; j < Board[i].length; ++j) {
               
@@ -128,6 +127,7 @@ public class Main {
                     System.out.println("Le joueur est vainqueur!!!");
                     break;
                 };
+
                 if(checkDraw()==true)
                 {
                     System.out.println("Match nul");
